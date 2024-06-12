@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { Address, toNano } from "ton";
+import { Address, toNano,comment } from "ton";
 import { useTonConnect } from "../hooks/useTonConnect";
 import { Card, FlexBoxCol, FlexBoxRow, Button, Input } from "./styled/styled";
 
@@ -8,6 +8,7 @@ export function TransferTon() {
   const { sender, connected } = useTonConnect();
 
   const [tonAmount, setTonAmount] = useState("0.01");
+  const [text, setText] = useState("0.01");
   const [tonRecipient, setTonRecipient] = useState(
     "EQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM9c"
   );
@@ -31,6 +32,14 @@ export function TransferTon() {
             style={{ marginRight: 8 }}
             value={tonRecipient}
             onChange={(e) => setTonRecipient(e.target.value)}
+          ></Input>
+        </FlexBoxRow>
+        <FlexBoxRow>
+          <label>Commit </label>
+          <Input
+            style={{ marginRight: 8 }}
+            value={text}
+            onChange={(e) => setText(e.target.value)}
           ></Input>
         </FlexBoxRow>
         <Button
